@@ -31,6 +31,26 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+#Generate fake data about products
+gem 'faker'
+#Send fake message (mails)
+gem 'letter_opener'
+#work with images
+gem 'carrierwave'
+#plugin to carrierwave, create miniature
+gem 'mini_magick'
+
+gem 'simple_form'
+
+gem 'twitter-bootstrap-rails'
+#filters
+gem 'ransack'
+#pagination
+gem 'kaminari'
+
+gem 'rails-i18n'
+
+gem 'statesman'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
