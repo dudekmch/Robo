@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'dostawa', to: 'static#shipping', as: :shipping
   get 'o-sklepie', to: 'static#about', as: :about
 
-  resources :categories, only: [:dupa]
+  resources :categories, only: [:show]
   resources :products, only: %i[index show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

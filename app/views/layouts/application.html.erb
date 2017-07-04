@@ -9,6 +9,47 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
-</html>
+    <nav class="navbar navbar-inverse bg-primary">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="<%= root_path %>">RoboShop</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="#">Start</a>
+          </li>
+          <li>
+            <a href="#">Polityka prywatności</a>
+          </li>
+          <li>
+            <a href="#">Regulamin</a>
+          </li>
+          <li>
+            <a href="#">Dostawa i płatności</a>
+          </li>
+          <li>
+            <a href="#">O sklepie</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Kategoria</h3>
+            <ul class="nav nav-sidebar">
+              <% (1..9).each do |category| %>
+              <li>
+                <%= link_to "Kategoria#{category}", category_path(category)%>
+              </li>
+              <%end%>
+            </ul>
+          </div>
+          <div class="col-md-10">
+            <%= yield %>
+          </div>
+
+        </div>
+
+      </body>
+    </html>
