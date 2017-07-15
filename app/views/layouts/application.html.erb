@@ -39,9 +39,9 @@
         <div class="col-md-2">
           <h3>Kategoria</h3>
           <ul class="nav nav-sidebar">
-            <% (1..9).each do |category| %>
+            <% Category.all.each do |category| %>
             <li>
-              <%= link_to "Kategoria#{category}", category_path(category)%>
+              <%= link_to category.name, category_path(category.id)%>
             </li>
             <%end%>
           </ul>
