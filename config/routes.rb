@@ -1,26 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'categories/index'
-  end
-
-  namespace :admin do
-    get 'categories/new'
-  end
-
-  namespace :admin do
-    get 'categories/edit'
-  end
-
-  namespace :admin do
-    get 'products/index'
-  end
-
-  namespace :admin do
-    get 'products/new'
-  end
-
-  namespace :admin do
-    get 'products/edit'
+    resources :categories
+    resources :products
   end
 
   root to: 'products#index'
