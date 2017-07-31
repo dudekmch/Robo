@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'products/index'
+  end
+
+  namespace :admin do
+    get 'products/new'
+  end
+
+  namespace :admin do
+    get 'products/edit'
+  end
+
   root to: 'products#index'
 
   get 'regulamin', to: 'static#terms', as: :terms
