@@ -1,0 +1,10 @@
+<%= simple_form_for [:admin, @product] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :long_description, :input_html => {:rows => 10} %>
+    <%= f.input :price %>
+    <%= f.association :category %>
+    <%=image_tag @product.photo%>
+    <%= f.input :photo %>
+    <%= f.submit %>
+<% end %>
