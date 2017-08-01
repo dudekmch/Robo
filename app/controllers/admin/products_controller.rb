@@ -1,6 +1,7 @@
 class Admin::ProductsController < Admin::BaseController
   def index
-    @products = Product.page(params[:page]).per(30)
+    @search = Product.search(params[:q])
+    @products = @search.result.page(params[:page]).per(30)
   end
 
   def new

@@ -7,9 +7,9 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Nazwa</th>
-                <th>Cena</th>
-                <th>Kategoria</th>
+                <th><%= sort_link(@search, :name, "Nazwa") %></th>
+                <th><%= sort_link(@search, :price, "Cena") %></th>
+                <th><%= sort_link(@search, :category_name, "Kategoria") %></th>
                 <th></th>
             </tr>
         </thead>

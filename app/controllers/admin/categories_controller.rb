@@ -1,6 +1,7 @@
 class Admin::CategoriesController < Admin::BaseController
     def index
-    @categories = Category.all
+    @search = Category.search(params[:q])
+    @categories = @search.result
   end
 
   def new
