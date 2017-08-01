@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root to: 'products#index'
+    resources :categories
+    resources :products
+  end
+
   root to: 'products#index'
 
   get 'regulamin', to: 'static#terms', as: :terms

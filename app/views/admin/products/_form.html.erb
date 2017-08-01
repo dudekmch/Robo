@@ -1,0 +1,10 @@
+<%= simple_form_for [:admin, @product] do |f| %>
+    <%= f.input :name, label: 'Nazwa' %>
+    <%= f.input :description, label: 'Opis' %>
+    <%= f.input :long_description,label: 'Szczegółowy opis', :input_html => {:rows => 10} %>
+    <%= f.input :price, label: 'Cena'%>
+    <%= f.association :category, label: 'Kategoria'%>
+    <%=image_tag @product.photo%>
+    <%= f.input :photo %>
+    <%= f.submit 'Dodaj produkt'%>
+<% end %>
