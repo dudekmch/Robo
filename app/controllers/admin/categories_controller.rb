@@ -34,6 +34,7 @@ class Admin::CategoriesController < Admin::BaseController
     @category = Category.find(params[:id])
     if @category.products.size == 0
       @category.destroy
+      redirect_to admin_categories_path, notice: "Pomyślnie usunięto kategorie #{@category.name}"
     else
       redirect_to admin_categories_path, alert: "W #{@category.name} znajdują się produkty, usuń je przed usunięciem kategorii"
     end 

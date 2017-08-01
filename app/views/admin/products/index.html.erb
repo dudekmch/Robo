@@ -1,7 +1,7 @@
     <h1>Produkty</h1>
 
     <%= link_to new_admin_product_path, class: "btn btn-success" do %>
-        <span class="fa fa-plus"></span>Dodaj nowy Product
+        <span class="fa fa-plus"></span>Dodaj nowy Produkt
     <% end %>
 
     <hr />
@@ -22,7 +22,7 @@
                 <th><%= sort_link(@search, :name, "Nazwa") %></th>
                 <th><%= sort_link(@search, :price, "Cena") %></th>
                 <th><%= sort_link(@search, :category_name, "Kategoria") %></th>
-                <th></th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +33,10 @@
                     <td><%= product.category.name %></td>
                     <td>
                         <%= link_to "Edycja", edit_admin_product_path(product), class: "btn btn-default btn-xs" %>
+                        <%= link_to "Usuń", admin_product_path(product), 
+                        method: :delete,
+                        data: { confirm: 'Jesteś pewien?'},
+                        class: "btn btn-danger btn-xs" %>
                     </td>
                 </tr>
             <% end %>
