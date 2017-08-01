@@ -19,6 +19,10 @@
                     <td><%= category.name %></td>
                     <td>
                         <%= link_to "Edycja", edit_admin_category_path(category), class: "btn btn-default btn-xs" %>
+                        <%= link_to "Usuń", admin_category_path(category), 
+                        method: :delete,
+                        data: { confirm: 'Are you sure?'},
+                        class: "btn btn-danger btn-xs" %>
                     </td>
                 </tr>
             <% end %>

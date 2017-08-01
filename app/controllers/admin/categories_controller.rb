@@ -30,6 +30,15 @@ class Admin::CategoriesController < Admin::BaseController
     end
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    if @category.products.size == 0
+      @category.destroy
+    else
+      redirect_to admin_categories_path, alert: "W #{@category.name} znajdują się produkty, usuń je przed usunięciem kategorii"
+    end 
+  end
+
 private
 
   def category_params
