@@ -4,6 +4,18 @@
         <span class="fa fa-plus"></span>Dodaj nowy Product
     <% end %>
 
+    <hr />
+
+    <div class="search-form">
+        <%= search_form_for [:admin, @search] do |f| %>
+            <%= f.text_field :name_or_description_or_long_description_cont, placeholder: "Szukaj Tekstu" %>
+            <%= f.text_field :price_gt, placeholder: "Cena od" %>
+            <%= f.text_field :price_lt, placeholder: "Cena do"%>
+            <%= f.submit "Szukaj", class: "btn btn-info btn-sm"%>
+            <%= link_to "Wyczyść filtr", admin_products_path, class:"btn btn-warning btn-sm" %>
+        <% end %>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
