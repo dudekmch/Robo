@@ -8,7 +8,7 @@
 
     <div class="search-form">
         <%= search_form_for [:admin, @search] do |f| %>
-            <%= f.text_field :name_or_description_or_long_description_cont, placeholder: "Szukaj Tekstu" %>
+            <%= f.text_field :name_or_category_name_cont, placeholder: "Szukaj Tekstu" %>
             <%= f.text_field :price_gt, placeholder: "Cena od" %>
             <%= f.text_field :price_lt, placeholder: "Cena do"%>
             <%= f.submit "Szukaj", class: "btn btn-info btn-sm"%>
@@ -32,6 +32,7 @@
                     <td><%= number_to_currency product.price %></td>
                     <td><%= product.category.name %></td>
                     <td>
+                        <%= link_to "Podgląd", admin_product_path(product), class: "btn btn-primary btn-xs" %>
                         <%= link_to "Edycja", edit_admin_product_path(product), class: "btn btn-default btn-xs" %>
                         <%= link_to "Usuń", admin_product_path(product), 
                         method: :delete,
