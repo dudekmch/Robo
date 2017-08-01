@@ -4,12 +4,12 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def new
-    @categories = Category.create()
+    @category = Category.create()
   end
 
   def create
-      @categories=Category.create(category_params)
-    if @categories.save
+      @category=Category.create(category_params)
+    if @category.save
       redirect_to admin_categories_path, notice: 'Pomyslnie dodano kategorie'
     else
       render action: :new
@@ -17,12 +17,12 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def edit
-    @categories = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def update
-    @categories = Category.find(params[:id])
-    if @categories.update_attributes(category_params)
+    @category = Category.find(params[:id])
+    if @category.update_attributes(category_params)
       redirect_to admin_categories_path, notice: 'Pomyslnie zmieniono kategorie'
     else
       render action: :edit
