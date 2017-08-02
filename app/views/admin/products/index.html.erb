@@ -1,0 +1,49 @@
+    <h1>Produkty</h1>
+
+    <%= link_to new_admin_product_path, class: "btn btn-success" do %>
+        <span class="fa fa-plus"></span>Dodaj nowy Produkt
+    <% end %>
+
+    <hr />
+
+    <div class="search-form">
+        <%= search_form_for [:admin, @search] do |f| %>
+            <%= f.text_field :name_or_category_name_cont, placeholder: "Szukaj Tekstu" %>
+            <%= f.text_field :price_gt, placeholder: "Cena od" %>
+            <%= f.text_field :price_lt, placeholder: "Cena do"%>
+            <%= f.submit "Szukaj", class: "btn btn-info btn-sm"%>
+            <%= link_to "Wyczyść filtr", admin_products_path, class:"btn btn-warning btn-sm" %>
+        <% end %>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><%= sort_link(@search, :name, "Nazwa") %></th>
+                <th><%= sort_link(@search, :price, "Cena") %></th>
+                <th><%= sort_link(@search, :category_name, "Kategoria") %></th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @products.each do |product| %>
+                <tr>
+                    <td><%= product.name %></td>
+                    <td><%= number_to_currency product.price %></td>
+                    <td><%= product.category.name %></td>
+                    <td>
+                        <%= link_to "Podgląd", admin_product_path(product), class: "btn btn-primary btn-xs" %>
+                        <%= link_to "Edycja", edit_admin_product_path(product), class: "btn btn-default btn-xs" %>
+                        <%= link_to "Usuń", admin_product_path(product), 
+                        method: :delete,
+                        data: { confirm: 'Jesteś pewien?'},
+                        class: "btn btn-danger btn-xs" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <%=paginate @products %>
+
+
