@@ -20,6 +20,11 @@
           <li <% if [params[:controller], params[:action]]==["static", "about"]%>class="active"<%end%>>
             <%= link_to "O sklepie", about_path%>
           </li>
+          <% if user_signed_in? and current_user.admin?%>
+            <li>
+              <%= link_to "Panel administracyjny", admin_root_path%>
+            </li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
