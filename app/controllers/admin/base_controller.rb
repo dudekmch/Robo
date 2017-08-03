@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-  layout 'admin'
+  layout 'content'
   before_action :authenticate
 
   def authenticate
