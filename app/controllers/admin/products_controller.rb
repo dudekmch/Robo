@@ -4,21 +4,21 @@ class Admin::ProductsController < Admin::BaseController
     @products = @search.result.page(params[:page]).per(30)
   end
 
-   def show
+  def show
     @product = Product.find(params[:id])
   end
 
   def new
-    @product = Product.create()
+    @product = Product.create
   end
 
   def create
-      @product=Product.create(product_params)
+    @product = Product.create(product_params)
     if @product.save
       redirect_to admin_products_path, notice: 'Pomyslnie dodano product'
     else
       render action: :new
-    end  
+    end
   end
 
   def edit
@@ -39,8 +39,8 @@ class Admin::ProductsController < Admin::BaseController
     @product.destroy
     redirect_to admin_products_path, notice: 'Pomyślnie usunięto produkt'
   end
-  
-private
+
+  private
 
   def product_params
     params.require(:product).permit(
@@ -50,6 +50,6 @@ private
       :long_description,
       :price,
       :photo
-    )  
+    )
   end
 end
