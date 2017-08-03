@@ -1,4 +1,5 @@
 <%= simple_form_for [:admin, @user] do |f| %>
     <%= f.input :email, label: 'Nazwa' %>
     <%= f.input :admin, as: :select ,label: 'Administrator' %>
+     <%= f.submit 'Aktualizuj'%>
 <% end %>

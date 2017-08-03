@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::BaseController
   def index
     @search = User.search(params[:q])
-    @user = @search.result.page(params[:page]).per(30)
+    @users = @search.result.page(params[:page]).per(30)
   end
 
   def show
@@ -15,6 +15,7 @@ class Admin::UsersController < Admin::BaseController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(user_params)
+    redirect_to admin_users_path, notice: 'Pomyślnie zaktualizowano uzytkownika'
   end
 
   private
