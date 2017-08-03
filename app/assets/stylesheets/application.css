@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require devise_bootsrtap_views
  */
+
  .nav-sidebar > .active > a,
  .nav-sidebar > .active > a:hover,
  .nav-sidebar > .active > a:focus {
