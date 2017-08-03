@@ -53,6 +53,9 @@ gem 'statesman'
 
 gem 'devise-bootstrap-views'
 
+  # Send fake message (mails)
+  gem 'letter_opener'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -63,8 +66,7 @@ group :development, :test do
 end
 
 group :development do
-  # Send fake message (mails)
-  gem 'letter_opener'
+
   gem 'listen', '~> 3.0.5'
   gem 'rubocop'
   # Spring speeds up development by keeping your application running in the background.
