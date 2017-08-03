@@ -3,8 +3,6 @@ class Admin::BaseController < ApplicationController
   before_action :authenticate
 
   def authenticate
-    authenticate_or_request_with_http_basic 'Podaj haslo' do |name, password|
-      name == 'admin' && password == 'admin'
-    end
+    redirect_to new_user_session_path unless current_user && current_user.admin?
   end
 end
