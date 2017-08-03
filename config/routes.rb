@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :admin do
     root to: 'products#index'
     resources :categories
     resources :products
+    resources :users
   end
 
   root to: 'products#index'

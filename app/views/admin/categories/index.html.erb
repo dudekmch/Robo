@@ -10,14 +10,14 @@
         <thead>
             <tr>
                 <th><%= sort_link(@search, :name, "Nazwa") %></th>
-                <th>Akcje</th>
+                <th class ="text-center">Akcje</th>
             </tr>
         </thead>
         <tbody>
             <% @categories.each do |category| %>
                 <tr>
                     <td><%= category.name %></td>
-                    <td>
+                    <td align="center">
                         <%= link_to "Edycja", edit_admin_category_path(category), class: "btn btn-default btn-xs" %>
                         <%= link_to "Usuń", admin_category_path(category), 
                         method: :delete,

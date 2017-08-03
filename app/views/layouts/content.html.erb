@@ -10,12 +10,8 @@
 
   <body>
     <%= render 'navigation/navbar' %>
-     <% if controller_name == 'sessions'%>
       <div class="container">
         <%= yield %>
       </div>
-     <% else %>
-      <%= render 'navigation/navsidebar' %>
-     <% end %>
   </body>
 </html>

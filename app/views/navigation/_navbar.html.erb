@@ -1,0 +1,47 @@
+
+    <nav class="navbar navbar-inverse bg-primary">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="<%= root_path %>">RoboShop</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li <% if [params[:controller], params[:action]]==["products", "index"]%>class="active"<%end%>>
+            <%= link_to "Start", products_path%>
+          </li>
+           <li <% if [params[:controller], params[:action]]==["static", "privacy"]%>class="active"<%end%>>
+            <%= link_to "Polityka prywatności", privacy_path%>
+          </li>
+          <li <% if [params[:controller], params[:action]]==["static", "terms"]%>class="active"<%end%>>
+           <%= link_to "Regulamin", terms_path%>
+          </li>
+          <li <% if [params[:controller], params[:action]]==["static", "shipping"]%>class="active"<%end%>>
+            <%= link_to "Dostawa i płatności", shipping_path%>
+          </li>
+          <li <% if [params[:controller], params[:action]]==["static", "about"]%>class="active"<%end%>>
+            <%= link_to "O sklepie", about_path%>
+          </li>
+          <% if user_signed_in? and current_user.admin?%>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administracja
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Produkty", admin_products_path %></li>
+              <li><%= link_to "Kategorie", admin_categories_path %></li>
+              <li><%= link_to "Uzytkownicy", admin_users_path %></li>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Login', new_user_session_path %>  
+           </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>

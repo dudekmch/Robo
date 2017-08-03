@@ -1,0 +1,18 @@
+
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+          <h3>Kategoria</h3>
+          <ul class="nav nav-sidebar">
+            <% Category.all.each do |category| %>
+            <li <% if @category == category %>class="active"<%end%>>
+              <%= link_to category.name, category_path(category.id)%>
+            </li>
+            <%end%>
+          </ul>
+        </div>
+        <div class="col-md-10">
+          <%= yield %>
+        </div>
+      </div>
+    </div>

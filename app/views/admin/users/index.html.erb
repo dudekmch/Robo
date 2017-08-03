@@ -1,0 +1,35 @@
+    <h1>Uzytkownicy</h1>
+    
+    <hr />
+
+    <div class="search-form">
+        <%= search_form_for [:admin, @search] do |f| %>
+            <%= f.text_field :email_cont, placeholder: "Szukaj Tekstu" %>
+            <%= f.submit "Szukaj", class: "btn btn-info btn-sm"%>
+            <%= link_to "Wyczyść filtr", admin_users_path, class:"btn btn-warning btn-sm" %>
+        <% end %>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><%= sort_link(@search, :email, "E-mail") %></th>
+                <th><%= sort_link(@search, :admin, "Administrator") %></th>
+                <th class ="text-center">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.email %></td>
+                    <td><%= user.admin %></td>
+                    <td align="center">
+                        <%= link_to "Podgląd", admin_user_path(user), class: "btn btn-primary btn-xs" %>
+                        <%= link_to "Edycja", edit_admin_user_path(user), class: "btn btn-default btn-xs" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <%=paginate @users %>
