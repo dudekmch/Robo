@@ -21,6 +21,9 @@
       <li <% if params[:controller] == "admin/categories" %> class="active" <% end %> >
         <%= link_to "Kategorie", admin_categories_path%>
       </li>
+      <li <% if params[:controller] == "admin/users" %> class="active" <% end %> >
+        <%= link_to "Uzytkownicy", admin_users_path%>
+      </li>
     </div>
   </nav>
   <div class="container-fluid">
