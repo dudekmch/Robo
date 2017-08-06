@@ -5,51 +5,16 @@
           <a class="navbar-brand" href="<%= root_path %>">RoboShop</a>
         </div>
         <ul class="nav navbar-nav">
-          <li <% if [params[:controller], params[:action]]==["products", "index"]%>class="active"<%end%>>
-            <%= link_to "Start", products_path%>
-          </li>
-           <li <% if [params[:controller], params[:action]]==["static", "privacy"]%>class="active"<%end%>>
-            <%= link_to "Polityka prywatności", privacy_path%>
-          </li>
-          <li <% if [params[:controller], params[:action]]==["static", "terms"]%>class="active"<%end%>>
-           <%= link_to "Regulamin", terms_path%>
-          </li>
-          <li <% if [params[:controller], params[:action]]==["static", "shipping"]%>class="active"<%end%>>
-            <%= link_to "Dostawa i płatności", shipping_path%>
-          </li>
-          <li <% if [params[:controller], params[:action]]==["static", "about"]%>class="active"<%end%>>
-            <%= link_to "O sklepie", about_path%>
-          </li>
-          <% if user_signed_in? and current_user.admin?%>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administracja
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Produkty", admin_products_path %></li>
-              <li><%= link_to "Kategorie", admin_categories_path %></li>
-              <li><%= link_to "Uzytkownicy", admin_users_path %></li>
-            </ul>
-          </li>
-          <% end %>
+          <%= render 'navigation/main_buttons' %>
+          <%= render 'navigation/admin_menu' %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
          <li>
-         <%= link_to '#' do%>
-         <span class-"fa fa-shopping-cart"></span>
-         <%= current_cart.line_items.map { |e| e.quantity }.sum %>
-         produktów za 
-         <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
-         <% end %>
+          <%= render 'navigation/cart_summary' %>
          </li>
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-            </li>
-          <% else %>
-            <li>
-              <%= link_to 'Login', new_user_session_path %>  
-           </li>
-          <% end %>
+         <li>
+          <%= render 'navigation/login_logout' %>
+         </li>
         </ul>
       </div>
     </nav>
