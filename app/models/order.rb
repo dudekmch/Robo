@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :shippig_type
+  has_one :shippig_type
   belongs_to :user
   has_many :line_items
 
