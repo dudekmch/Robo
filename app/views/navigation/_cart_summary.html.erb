@@ -1,4 +1,4 @@
- <%= link_to '#' do%>
+ <%= link_to cart_path do%>
     <span class-"fa fa-shopping-cart"></span>
     <%= current_cart.line_items.map { |e| e.quantity }.sum %>
     produktów za 
