@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_one :shippig_type
   belongs_to :user
   has_many :line_items
-  has_many :transitions, className: 'OrderTransition', autosave: false
+  has_many :transitions, autosave: false
 
   delegate :can_transition_to?, :transition_to!, :transition_to, :current_state,
            to: :state_machine
