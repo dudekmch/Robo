@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   include Statesman::Adapters::ActiveRecordQueries
   has_one :shippig_type
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :line_items
   has_many :transitions, autosave: false
 

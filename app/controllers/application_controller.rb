@@ -13,6 +13,9 @@ class ApplicationController < ActionController::Base
 
   def current_cart_or_create
     cart = current_cart
+    if current_user
+      cart.user = current_user
+    end
     if cart.new_record?
       cart.save
       session[:order_id] = cart.id
