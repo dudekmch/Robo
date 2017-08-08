@@ -5,7 +5,8 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.create(address_params)
-    if @address.save?
+    if !@address.new_record?
+      current_user.update(address: @address)
       redirect_to "#", notice: 'Poprawnie zapisano adres'
     else
       render action: :new
@@ -13,13 +14,20 @@ class AddressesController < ApplicationController
   end
 
   def show
-    @address = Address.find(params[:adress_id])
+    @address = Address.find(params[:id])
   end
 
   def edit
+    @address = Address.find(params[:id])
   end
 
   def update
+    @address = Address.find(params[:id])
+    if @address.update_attributes(address_params)
+      redirect_to '#', notice: 'Pomyslnie zmieniono adres'
+    else
+      render action: :edit
+    end
   end
 
   private
