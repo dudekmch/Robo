@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :addresses
 
   resource :cart, controller: 'cart', only: %i[show update edit] do
     member do
