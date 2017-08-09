@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resource :summary do
     member do
-      get :show_summary
+      post :show_summary
     end
   end
   
