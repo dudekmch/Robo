@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'summary/show_summary'
+
+  resource :summary do
+    member do
+      get :show_summary
+    end
+  end
+  
   resources :addresses
 
   resource :cart, controller: 'cart', only: %i[show update edit] do

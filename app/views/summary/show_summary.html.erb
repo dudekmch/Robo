@@ -1,0 +1,27 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <th>Produkt</th>
+      <th>Liczba sztuk</th>
+      <th>Cena jednostkowa</th>
+      <th>Cena całkowita</th>
+    </thead>
+    <tbody>
+      <%  @line_items.each do |item| %>
+        <tr>
+          <td><%= link_to item.unit_name, product_path(item.product) %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency item.unit_price %></td>
+          <td><%= number_to_currency item.full_price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+   </table>
+
+<h3>Całkowity koszt zamówienia : <%= @line_items.map { |e| e.full_price }.sum %></h3>
+
+   <p>Adres zamówienia</p>
+  <p><%= full_name(@address) %></p>
+  <p><%= @address.street %></p>
+  <p><%= city_zipcode(@address)%></p>
+  </div>
