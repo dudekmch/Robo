@@ -24,12 +24,40 @@
           </td>
         </tr>
       <% end %>
+
+      <% if @cart.shipping_type %>
+      <tr>
+        <td><%= @cart.shipping_type.name %></td>
+        <td></td>
+        <td><%= number_to_currency @cart.shipping_type.cost %></td>
+        <td><%= number_to_currency @cart.full_cost %></td>
+        <td></td>
+      </tr>
+      <% end %>
     </tbody>
    </table>
-
+     <p>
+     <% @shippings.each do |s| %>
+      <%= link_to add_shipping_type_to_cart_path(shipping_id: s.id), method: :post, class: "btn btn-info" do %>
+        <%= s.name %> <%= number_to_currency s.cost %>
+      <% end %>
+    <% end %>
+    </p>
+    <% if @cart.shipping_type %>
    <p>
-    <%= render "address_confirmation" %>
+     <%= render "address_confirmation" %>
    </p>
-  <% end %>
+   <%else%>
+     <h3>Wybierz rodzaj dostawy</h3>
+   <%end%>
+ <% end %>
+
+
+
+
+         
+        
+ 
+ 
 
 

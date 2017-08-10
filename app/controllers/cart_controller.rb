@@ -1,9 +1,11 @@
 class CartController < ApplicationController
   def show
     @cart = current_cart
+    @shippings = ShippingType.all
   end
 
   def edit
+    @cart = current_cart
   end
 
   def confirmation
@@ -32,5 +34,14 @@ class CartController < ApplicationController
       item.destroy
     end
     redirect_to :back, notice: 'Usunięto produkt z koszyka'
+  end
+
+  def add_shipping_type_to
+    order = current_cart
+    shipping = ShippingType.find(params[:shipping_id])
+    order.shipping_type = shipping
+    order.shipping_cost = shipping.cost
+    order.save
+    redirect_to cart_path, notice: 'Dodano rodzaj dostawy'
   end
 end

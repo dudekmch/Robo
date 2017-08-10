@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       post :add_product
       post :remove_product
+      post :add_shipping_type_to 
     end
   end
 

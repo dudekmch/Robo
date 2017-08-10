@@ -7,7 +7,7 @@
       <th>Cena całkowita</th>
     </thead>
     <tbody>
-      <%  @line_items.each do |item| %>
+      <%  @order.line_items.each do |item| %>
         <tr>
           <td><%= link_to item.unit_name, product_path(item.product) %></td>
           <td><%= item.quantity %></td>
@@ -15,13 +15,19 @@
           <td><%= number_to_currency item.full_price %></td>
         </tr>
       <% end %>
+       <tr>
+        <td><%= @order.shipping_type.name %></td>
+        <td></td>
+        <td><%= number_to_currency @order.shipping_type.cost %></td>
+        <td></td>
+      </tr>
     </tbody>
    </table>
 
-<h3>Całkowity koszt zamówienia : <%= @line_items.map { |e| e.full_price }.sum %></h3>
+<h3>Całkowity koszt zamówienia : <%= number_to_currency @order.full_cost %></h3>
 
    <p>Adres zamówienia</p>
-  <p><%= full_name(@address) %></p>
-  <p><%= @address.street %></p>
-  <p><%= city_zipcode(@address)%></p>
+  <p><%= full_name(@user.address) %></p>
+  <p><%= @user.address.street %></p>
+  <p><%= city_zipcode(@user.address)%></p>
   </div>

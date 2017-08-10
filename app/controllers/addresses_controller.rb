@@ -24,7 +24,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update_attributes(address_params)
-      redirect_to show_summary_summary_path(user_id: current_user.id), notice: 'Pomyslnie zmieniono adres'
+      redirect_to show_summary_summary_path(user_id: current_user.id)
     else
       render action: :edit
     end

@@ -1,3 +1,3 @@
 class ShippingType < ApplicationRecord
-  belongs_to :order
+  has_many :orders
 end
