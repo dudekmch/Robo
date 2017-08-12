@@ -13,10 +13,6 @@ class AddressesController < ApplicationController
     end
   end
 
-  def show
-    @address = Address.find(params[:id])
-  end
-
   def edit
     @address = Address.find(params[:id])
   end

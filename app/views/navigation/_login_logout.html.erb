@@ -1,5 +1,14 @@
 <% if user_signed_in? %>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%=render partial: 'navigation/login_logout_dropdown_title' %>
+    </a>
+    <ul class="dropdown-menu">
+     <li><%= link_to 'Konto', admin_products_path %></li>
+     <li><%= link_to 'Historia zamówień', admin_products_path %></li>
+     <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+    </ul>
+   </li>  
 <% else %>
   <%= link_to 'Login', new_user_session_path %>
 <% end %>

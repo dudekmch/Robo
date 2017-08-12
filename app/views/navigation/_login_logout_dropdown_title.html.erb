@@ -1,0 +1,5 @@
+<% if current_user.address  %>
+  <%= current_user.address.first_name %>
+<% else %>
+  Uzytkownik<%= current_user.id %>
+<% end %>

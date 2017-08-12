@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  get 'summary/show_summary'
 
   resources :summary, only: %i[show] do
     member do
       post :order_confirmation
     end
   end
-  
+
   resources :addresses
 
   resource :cart, controller: 'cart', only: %i[show update edit] do
