@@ -8,11 +8,11 @@ Rails.application.routes.draw do
 
   resources :addresses
 
-  resource :cart, controller: 'cart', only: %i[show update edit] do
+  resources :carts, controller: 'cart', only: %i[index show update edit] do
     member do
       post :add_product
       post :remove_product
-      post :add_shipping_type_to 
+      post :add_shipping_type_to
     end
   end
 

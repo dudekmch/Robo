@@ -1,6 +1,13 @@
 class CartController < ApplicationController
+    before_action :current_cart, only: 'show'
+
+  def index
+    @search = Order.where(user: current_user).search(params[:q])
+    @orders = @search.result.page(params[:page]).per(30)
+  end
+
   def show
-    @cart = current_cart
+    @cart = Order.find(params[:id])
     @shippings = ShippingType.all
   end
 
@@ -8,12 +15,9 @@ class CartController < ApplicationController
     @cart = current_cart
   end
 
-  def confirmation
-  end
-
   def add_product
     order = current_cart_or_create
-    product = Product.find(params[:product_id])
+    product = Product.find(params[:id])
     if item = order.line_items.where(product: product).first
       item.quantity += 1
       item.save
