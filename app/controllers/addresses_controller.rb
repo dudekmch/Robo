@@ -7,7 +7,7 @@ class AddressesController < ApplicationController
     @address = Address.create(address_params)
     if !@address.new_record?
       current_user.update(address: @address)
-      redirect_to show_summary_summary_path(current_user), notice: 'Poprawnie zapisano adres'
+      redirect_to summary_path, notice: 'Poprawnie zapisano adres'
     else
       render action: :new
     end
@@ -24,7 +24,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update_attributes(address_params)
-      redirect_to show_summary_summary_path(user_id: current_user.id)
+      redirect_to summary_path
     else
       render action: :edit
     end

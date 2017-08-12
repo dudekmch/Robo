@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'summary/show_summary'
 
-  resource :summary do
+  resources :summary, only: %i[show] do
     member do
-      post :show_summary
+      post :order_confirmation
     end
   end
   
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
   namespace :admin do
     root to: 'products#index'
     resources :categories

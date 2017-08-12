@@ -30,4 +30,11 @@
   <p><%= full_name(@user.address) %></p>
   <p><%= @user.address.street %></p>
   <p><%= city_zipcode(@user.address)%></p>
+
+    <%= link_to order_confirmation_summary_path, method: :post, class: "btn btn-success btn-lg" do%>
+        Potwierdź zamówienie
+        <span class="fa fa-step-forward"></span>
+      <% end %>
   </div>
+
+
