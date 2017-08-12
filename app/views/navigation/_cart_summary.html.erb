@@ -1,5 +1,5 @@
 <% if current_cart.id %>
- <%= link_to cart_path(current_cart.id) do%>
+ <%= link_to collect_cart_path(current_cart.id) do%>
     <span class-"fa fa-shopping-cart"></span>
     <%= current_cart.line_items.map { |e| e.quantity }.sum %>
     produktów za 

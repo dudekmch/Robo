@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post :add_product
       post :remove_product
       post :add_shipping_type_to
+      get :collect
     end
   end
 
