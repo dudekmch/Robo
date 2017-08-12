@@ -12,9 +12,11 @@
     <%= render 'navigation/navbar' %>
      <% if controller_name == 'sessions'%>
       <div class="container">
+        <%= bootstrap_flash %>
         <%= yield %>
       </div>
      <% else %>
+      <%= bootstrap_flash %>
       <%= render 'navigation/navsidebar' %>
      <% end %>
   </body>

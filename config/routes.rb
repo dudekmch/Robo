@@ -1,5 +1,23 @@
 Rails.application.routes.draw do
+
+  resources :summary, only: %i[show] do
+    member do
+      post :order_confirmation
+    end
+  end
+
+  resources :addresses
+
+  resource :cart, controller: 'cart', only: %i[show update edit] do
+    member do
+      post :add_product
+      post :remove_product
+      post :add_shipping_type_to 
+    end
+  end
+
   devise_for :users
+
   namespace :admin do
     root to: 'products#index'
     resources :categories

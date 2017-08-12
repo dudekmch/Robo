@@ -1,0 +1,16 @@
+ <% if current_user && current_user.address.nil? %>
+       <%= link_to new_address_path, class: "btn btn-success btn-lg" do%>
+         Dodaj adres wysyłki
+         <span class="fa fa-step-forward"></span>
+       <% end %>
+     <% elsif current_user %>
+      <%= link_to edit_address_path(current_user.address), class: "btn btn-success btn-lg" do%>
+        Potwierdź adres wysyłki
+        <span class="fa fa-step-forward"></span>
+      <% end %>
+     <% else %>
+        <%= link_to new_user_session_path, class: "btn btn-success btn-lg" do%>
+        Zaloguj się
+        <span class="fa fa-step-forward"></span>
+      <% end %>
+     <% end %>

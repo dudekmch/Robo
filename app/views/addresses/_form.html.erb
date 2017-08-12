@@ -1,0 +1,12 @@
+<%= simple_form_for [@address] do |f| %>
+    <%= f.input :first_name, label: 'Imię' %>
+    <%= f.input :last_name, label: 'Nazwisko' %>
+    <%= f.input :city,label: 'Miasto' %>
+    <%= f.input :zip_code, label: 'Kod pocztowy'%>
+    <%= f.input :street, label: 'Ulica' %>
+    <% if current_user.address.nil? %>
+      <%= f.submit 'Zapisz adres'%>
+    <% else %>
+      <%= f.submit 'Potwierdź adres'%>
+    <% end %>
+<% end %>

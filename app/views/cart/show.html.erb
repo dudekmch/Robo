@@ -1,0 +1,63 @@
+<h1>Twój koszyk</h1>
+<% if @cart.line_items.empty? %>
+  <p>Twój koszyk jest pusty</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <th>Produkt</th>
+      <th>Liczba sztuk</th>
+      <th>Cena jednostkowa</th>
+      <th>Cena całkowita</th>
+      <th>Akcja</th>
+    </thead>
+    <tbody>
+      <%  @cart.line_items.each do |item| %>
+        <tr>
+          <td><%= link_to item.unit_name, product_path(item.product) %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency item.unit_price %></td>
+          <td><%= number_to_currency item.full_price %></td>
+          <td>
+            <%= link_to remove_product_cart_path(product_id: item.product.id), method: :post do %>
+              Usuń
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+
+      <% if @cart.shipping_type %>
+      <tr>
+        <td><%= @cart.shipping_type.name %></td>
+        <td></td>
+        <td><%= number_to_currency @cart.shipping_type.cost %></td>
+        <td><%= number_to_currency @cart.full_cost %></td>
+        <td></td>
+      </tr>
+      <% end %>
+    </tbody>
+   </table>
+     <p>
+     <% @shippings.each do |s| %>
+      <%= link_to add_shipping_type_to_cart_path(shipping_id: s.id), method: :post, class: "btn btn-info" do %>
+        <%= s.name %> <%= number_to_currency s.cost %>
+      <% end %>
+    <% end %>
+    </p>
+    <% if @cart.shipping_type %>
+   <p>
+     <%= render "address_confirmation" %>
+   </p>
+   <%else%>
+     <h3>Wybierz rodzaj dostawy</h3>
+   <%end%>
+ <% end %>
+
+
+
+
+         
+        
+ 
+ 
+
+

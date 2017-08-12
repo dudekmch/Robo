@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shippig_type: one
+  shipping_cost: 9.99
+  user: one
+
+two:
+  shippig_type: two
+  shipping_cost: 9.99
+  user: two
