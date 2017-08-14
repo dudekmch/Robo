@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'orders/index'
+  end
+
+  namespace :admin do
+    get 'orders/show'
+  end
+
   resources :line_items do
     member do
       post :show_order_items
