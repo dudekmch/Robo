@@ -6,12 +6,9 @@ class CartController < ApplicationController
     @orders = @search.result.page(params[:page]).per(30)
   end
 
-  def show
-    get_order_data
-  end
-
   def collect
-    get_order_data
+    @cart = Order.find(params[:id])
+    @shippings = ShippingType.all
   end
 
   def edit
@@ -55,7 +52,6 @@ class CartController < ApplicationController
   private
 
   def get_order_data
-    @cart = Order.find(params[:id])
-    @shippings = ShippingType.all
+  
   end
 end

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :line_items do
+    member do
+      post :show_order_items
+    end
+  end
+
   resources :summary, only: %i[show] do
     member do
       post :order_confirmation
@@ -8,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :addresses
 
-  resources :carts, controller: 'cart', only: %i[index show update edit] do
+  resources :carts, controller: 'cart', only: %i[index update edit] do
     member do
       post :add_product
       post :remove_product

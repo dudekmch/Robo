@@ -1,0 +1,32 @@
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nazwa produktu</th>
+                <th>Ilość sztuk</th>
+                <th>Cena jednostkowa</th>
+                <th>Suma</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @line_items.each do |item| %>
+                <tr>
+                    <td><%= link_to item.product.name, product_path(item.product) %></td>
+                    <td><%= item.quantity%></td>
+                    <td><%= number_to_currency item.unit_price %></td>
+                    <td><%= number_to_currency item.full_price%></td>
+                </tr>
+            <% end %>
+            <tr>
+              <td>Dostawa: <%= @order.shipping_type.name %></td>
+              <td></td>
+              <td><%= number_to_currency @order.shipping_cost %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>Całkowity koszt zamówienia</b></td>
+              <td></td>
+              <td></td>
+              <td><b><%= number_to_currency @order.full_cost %></b></td>
+            </tr>
+        </tbody>
+    </table>
