@@ -7,13 +7,11 @@ class CartController < ApplicationController
   end
 
   def show
-    @cart = Order.find(params[:id])
-    @shippings = ShippingType.all
+    get_order_data
   end
 
   def collect
-    @cart = Order.find(params[:id])
-    @shippings = ShippingType.all
+    get_order_data
   end
 
   def edit
@@ -52,5 +50,12 @@ class CartController < ApplicationController
     order.shipping_cost = shipping.cost
     order.save
     redirect_to collect_cart_path, notice: 'Dodano rodzaj dostawy'
+  end
+
+  private
+
+  def get_order_data
+    @cart = Order.find(params[:id])
+    @shippings = ShippingType.all
   end
 end
