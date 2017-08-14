@@ -1,6 +1,13 @@
 class CartController < ApplicationController
-  def show
-    @cart = current_cart
+    before_action :current_cart, only: 'show'
+
+  def index
+    @search = Order.where(user: current_user).search(params[:q])
+    @orders = @search.result.page(params[:page]).per(30)
+  end
+
+  def collect
+    @cart = Order.find(params[:id])
     @shippings = ShippingType.all
   end
 
@@ -8,12 +15,9 @@ class CartController < ApplicationController
     @cart = current_cart
   end
 
-  def confirmation
-  end
-
   def add_product
     order = current_cart_or_create
-    product = Product.find(params[:product_id])
+    product = Product.find(params[:id])
     if item = order.line_items.where(product: product).first
       item.quantity += 1
       item.save
@@ -42,6 +46,12 @@ class CartController < ApplicationController
     order.shipping_type = shipping
     order.shipping_cost = shipping.cost
     order.save
-    redirect_to cart_path, notice: 'Dodano rodzaj dostawy'
+    redirect_to collect_cart_path, notice: 'Dodano rodzaj dostawy'
+  end
+
+  private
+
+  def get_order_data
+  
   end
 end

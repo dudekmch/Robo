@@ -27,7 +27,10 @@ class Order < ApplicationRecord
   end
 
   def full_cost
-    line_items.map { |e| e.full_price }.sum + shipping_cost
+    cost = line_items.map { |e| e.full_price }.sum
+    if shipping_cost
+      return cost + shipping_cost
+    end 
+    cost
   end
-  
 end

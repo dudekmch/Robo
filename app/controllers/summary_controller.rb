@@ -1,6 +1,6 @@
 class SummaryController < ApplicationController
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @order = current_cart
   end
 
