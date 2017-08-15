@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'orders/index'
-  end
-
-  namespace :admin do
-    get 'orders/show'
-  end
-
   resources :line_items do
     member do
       post :show_order_items
@@ -38,6 +30,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :products
     resources :users
+    resources :orders, only: %i[index show update]
   end
 
   root to: 'products#index'

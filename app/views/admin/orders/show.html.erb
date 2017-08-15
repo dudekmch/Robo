@@ -1,2 +1,13 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<%= render partial: 'shared/show_order_items' %>
+      <div>
+        <%= form_for [:admin, @order] do |f| %>
+          <select name="state">
+            <% OrderStateMachine.states_map.each do |state_name, human_name| %>
+              <option value="<%= state_name %>" <% if !@order.can_transition_to?(state_name) && @order.current_state != state_name %> disabled="disabled" <% end %>>
+              <%= human_name %></option>
+            <% end %>
+          </select>
+        <%= f.submit "Zmień status" %>
+        <% end %>
+      </div>
+
