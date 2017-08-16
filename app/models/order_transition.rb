@@ -1,7 +1,7 @@
 class OrderTransition < ActiveRecord::Base
   include Statesman::Adapters::ActiveRecordTransition
 
-  belongs_to :order, inverse_of: :transitions
+  belongs_to :order, inverse_of: :order_transitions
 
   after_destroy :update_most_recent, if: :most_recent?
 

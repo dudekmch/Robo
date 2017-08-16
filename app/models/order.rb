@@ -3,12 +3,10 @@ class Order < ApplicationRecord
   belongs_to :shipping_type, optional: true
   belongs_to :user, optional: true
   has_many :line_items
-  has_many :transitions, autosave: false
+  has_many :order_transitions, autosave: false
 
   delegate :can_transition_to?, :transition_to!, :transition_to, :current_state,
            to: :state_machine
-
-  accepts_nested_attributes_for :shipping_type
 
   def state_machine
     @state_machine ||= OrderStateMachine.new(self, transition_class: OrderTransition)
