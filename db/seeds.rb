@@ -1,26 +1,42 @@
 
+# Add categories
+
 8.times do
-    Category.create! name: Faker::Hacker.ingverb.capitalize
+  Category.create! name: Faker::Hacker.ingverb.capitalize
 end
 
 category_ids = Category.pluck(:id)
 
-print "Product "
+# Add products
+
+print 'Product '
 
 200.times do
 product = Product.create! name: "#{Faker::Hacker.verb} #{Faker::Hacker.noun}".capitalize,
-    description: Faker::Hacker.say_something_smart,
-    long_description: Faker::Lorem.paragraphs(3).join("\n\n"),
-    category_id: category_ids.sample,
-    price: Faker::Number.decimal(3,2)
+  description: Faker::Hacker.say_something_smart,
+  long_description: Faker::Lorem.paragraphs(3).join('\n\n'),
+  category_id: category_ids.sample,
+  price: Faker::Number.decimal(3,2)
 product.remote_photo_url = Faker::Avatar.image(
     product.name.parameterize,
-    "640x480",
-    "jpg",
-    "set#{[1,2,3].sample}",
-    "bg#{[1,2].sample}"
+    '640x480',
+    'jpg',
+    "set#{[1, 2, 3].sample}",
+    "bg#{[1, 2].sample}"
 )
 product.save
-print "."
+print '.'
 end
 puts
+
+# Add admin user
+
+user = User.new(
+  email: 'admin@admin.com',
+  password: '123456',
+  password_confirmation: '123456',
+  admin: true
+)
+user.skip_confirmation!
+user.save!
+print 'Added admin user'
