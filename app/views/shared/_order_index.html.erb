@@ -6,7 +6,7 @@
                 <th class="text-center"><%= sort_link(@search, :created_at, "Data złozenia zamówienia") %></th>
                 <th class="text-center">Suma zamowienia</th>
                 <th>Rodzaj dostawy</th>
-                <th><%= sort_link(@search, :order_transitions, "Status") %></th>
+                <th>Status</th>
                 <% if current_user.admin? %>
                 <th><%= sort_link(@search, :user_id, "Uzytkownik") %><th>
                 <%end%>
