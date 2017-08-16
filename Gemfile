@@ -53,8 +53,8 @@ gem 'statesman'
 
 gem 'devise-bootstrap-views'
 
-  # Send fake message (mails)
-  gem 'letter_opener'
+# Send fake message (mails)
+gem 'letter_opener'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
