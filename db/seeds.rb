@@ -41,6 +41,16 @@ user.skip_confirmation!
 user.save!
 print 'Added admin user'
 
+user = User.new(
+  email: 'user@user.com',
+  password: '123456',
+  password_confirmation: '123456',
+  admin: false
+)
+user.skip_confirmation!
+user.save!
+print 'Added admin user'
+
 type = ShippingType.new(
   name: 'Poczta Polska',
   cost: 10.50
