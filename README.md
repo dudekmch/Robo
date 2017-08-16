@@ -9,9 +9,10 @@ Application was creating to learn and practice Ruby and Ruby on Rails. The app i
 3. Run seeds to add some examples of products, categories,two users (one with     admin permissions, second without this permissions), two types of shippings,   with command: 'rake db:seed'. Login and password to created by seeds users     find in seeds.rb file.
 
 # Application on heroku
+url: https://sleepy-thicket-44743.herokuapp.com/
 
 1. Pictures of robots dose not show - is some problem with public folder
-2. Because of using letter_opener gem, without SMTP, after action invoke mail     sending, application is crashing - do not create    new user, use only         users created with seeds.rb
+2. Because of using letter_opener gem, without SMTP, after action invoke mail sending (create/modify user, change status of order), application is crashing
 
 # TODO
 
