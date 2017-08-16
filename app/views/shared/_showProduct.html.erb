@@ -4,7 +4,7 @@
         <p class="lead"><%=@product.description%></p>
         <%=simple_format(@product.long_description)%>
         <p><%=number_to_currency(@product.price)%></p>
-        <p><%=link_to "#", class: "btn btn-primary" do%>
+        <p><%=link_to add_product_cart_path(product_id: @product.id), method: :post, class: "btn btn-primary" do%>
             <span class="fa fa-shopping-cart">Dodaj do koszyka</span>
             <%end%>
         </p>
