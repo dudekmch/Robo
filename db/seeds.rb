@@ -1,7 +1,7 @@
 
 # Add categories
 
-8.times do
+4.times do
   Category.create! name: Faker::Hacker.ingverb.capitalize
 end
 
@@ -11,7 +11,7 @@ category_ids = Category.pluck(:id)
 
 print 'Product '
 
-200.times do
+30.times do
 product = Product.create! name: "#{Faker::Hacker.verb} #{Faker::Hacker.noun}".capitalize,
   description: Faker::Hacker.say_something_smart,
   long_description: Faker::Lorem.paragraphs(3).join('\n\n'),
@@ -40,3 +40,15 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 print 'Added admin user'
+
+type = ShippingType.new(
+  name: 'Poczta Polska',
+  cost: 10.50
+)
+type.save!
+
+type = ShippingType.new(
+  name: 'Poczta Polska',
+  cost: 10.50
+)
+type.save!
