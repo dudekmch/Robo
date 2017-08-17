@@ -39,7 +39,7 @@ user = User.new(
 )
 user.skip_confirmation!
 user.save!
-print 'Added admin user'
+puts 'Added admin user'
 
 user = User.new(
   email: 'user@user.com',
@@ -49,16 +49,18 @@ user = User.new(
 )
 user.skip_confirmation!
 user.save!
-print 'Added admin user'
+puts 'Added random user'
 
 type = ShippingType.new(
   name: 'Poczta Polska',
   cost: 10.50
 )
 type.save!
+puts 'Added poczta polska shipping type'
 
 type = ShippingType.new(
-  name: 'Poczta Polska',
-  cost: 10.50
+  name: 'Kurier',
+  cost: 15.60
 )
 type.save!
+puts 'Added kurier shipping type'
