@@ -16,12 +16,20 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     $('.thumbnail').hover(function(){
       $(this).addClass('highlighted-border');
       $(this).addClass('zoom');
     }, function(){
       $(this).removeClass('highlighted-border');
       $(this).removeClass('zoom');
+    });
+});
+
+$(document).on('turbolinks:load', function(){
+    $('.table-striped tbody tr').hover(function(){
+      $(this).addClass('highlighted');
+    }, function(){
+      $(this).removeClass('highlighted');
     });
 });
