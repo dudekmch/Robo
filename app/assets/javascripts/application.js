@@ -15,3 +15,13 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+    $('.thumbnail').hover(function(){
+      $(this).addClass('highlighted-border');
+      $(this).addClass('zoom');
+    }, function(){
+      $(this).removeClass('highlighted-border');
+      $(this).removeClass('zoom');
+    });
+});
