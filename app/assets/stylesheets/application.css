@@ -21,3 +21,18 @@
         color: #fff;
         background-color: #428bca
  }
+
+ .zoom {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+ }
+
+ .highlighted-border{
+   border: 3px solid;
+   border-color: #428bca;
+ }
+
+  tr.highlighted{
+   background-color: #cce6ff !important;
+ }
